@@ -3,7 +3,7 @@
 //—————————————————————————————— Installing something ——————————————————————————————
 OnInstallComplete
 {
-	"Installed a %(reference0),\w4 called %(reference1)."
+	"\0\s[0]Installed a %(reference0),\w4 called %(reference1)."
 	--
 	if "ghost" _in_ reference0 //A little menu to open or change to the ghost that was installed immediately
 	{
@@ -33,7 +33,7 @@ OnNarCreated
 {
 	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a" //Makes a clickable link that'll open the location of the file they just made
 	
-	"Successfully created %(_nar)."
+	"\0\s[0]Successfully created %(_nar)."
 }
 
 OnNarLocation
@@ -48,7 +48,7 @@ OnNarLocation
 //Starting an update
 OnUpdateBegin
 {
-	"\0Checking for updates.\w8"
+	"\0\s[0]Checking for updates.\w8"
 }
 
 //reference0 is the number of new files, starting from 0
@@ -59,7 +59,7 @@ OnUpdateReady
 	//plural checks, adds an s and changes is to are if there's more than 1 file
 	_s = ""; _are = "is"; if reference0 != 1; _s = "s"; _are = "are"
 	
-	"\0There %(_are) %(reference0) new file%(_s).\w8"
+	"\0\s[0]There %(_are) %(reference0) new file%(_s).\w8"
 }
 
 //When the update finishes. Don't forget to initialize any new variables you've created! ISVAR is handy for checking if a variable exists before you attempt to assign it, like if !ISVAR("newvariable"); newvariable = 0
@@ -68,11 +68,11 @@ OnUpdateComplete
 {
 	if reference0 == "none"
 	{
-		"\0There are no new files."
+		"\0\s[0]There are no new files."
 	}
 	else
 	{
-		"\0Update complete."
+		"\0\s[0]Update complete."
 	}
 }
 
@@ -82,7 +82,7 @@ OnUpdate.OnDownloadBegin
 	_progress = TOINT(reference1) + 1
 	_total = TOINT(reference2) + 1
 
-	"\0\b2\_qDownloading %(reference0)...\n\n\f[name,courier new]"
+	"\0\s[0]\b2\_qDownloading %(reference0)...\n\n\f[name,courier new]"
 	--
 	_display = ""
 	for _i = 0; _i < _total; _i++
@@ -103,20 +103,20 @@ OnUpdateFailure //If the update fails
 {
 	if reference0 == "timeout" //If it timed out
 	{
-		"\0Connection timed out."
+		"\0\s[0]Connection timed out."
 	}
 	elseif reference0 == "md5 miss" //If the update files have not been uploaded correctly and don't match the updates2.dau
 	{
 		_file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] //This gets the name and extension of the offending file
 		
-		"\0The MD5 values don't match.\w8 Contact the ghost author and let them know that '%(_file)' is giving an MD5 error."
+		"\0\s[0]The MD5 values don't match.\w8 Contact the ghost author and let them know that '%(_file)' is giving an MD5 error."
 	}
 	elseif reference0 == "artificial" //If the user cancels the update by double clicking the balloon
 	{
-		"\0Update cancelled."
+		"\0\s[0]Update cancelled."
 	}
 	else //Any other errors
 	{
-		"\0Error while updating:\w4 ""%(reference0)""."
+		"\0\s[0]Error while updating:\w4 ""%(reference0)""."
 	}
 }

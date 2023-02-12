@@ -59,4 +59,4 @@ https://zichqec.github.io/s-the-skeleton/
 
 That's it, have fun!
 
-Simplicity Template v1.0.0, using YAYATc571-5.
+Simplicity Template v1.0.1, using YAYATc571-5.

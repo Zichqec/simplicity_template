@@ -14,7 +14,7 @@ descript
 
 surface0
 {
-	collision,0,0,150,65,head
+	collision,0,0,130,65,head
 	
 	//Example code for blink animation - uncomment if you want it
 	//animation0.interval,random,4
@@ -27,5 +27,5 @@ surface0
 
 surface10
 {
-	collision,0,0,150,65,head
+	collision,0,0,130,65,head
 }

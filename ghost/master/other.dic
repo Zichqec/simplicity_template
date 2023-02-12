@@ -129,6 +129,7 @@ themself
 }
 
 //%(they) %(p('are','is'))
+//You can change the name of this function if you want! I kept it short so it's fast to type
 p
 {
 	if SHIORI3FW.UserSex == "undef"; _argv[0] //they are
@@ -149,3 +150,16 @@ If not using they, for example if using she, it will return the second specified
 With this function, you can quickly customize words that need to change based on whether it should be singular or plural. Just remember; the %(p) function is set up so that the first word you specify matches with the 'they' labels used on the pronoun functions. You can always switch that around if you like, too.
 
 */
+
+//Copied from the base SHIORI files, but with the username variable added
+OnNotifyUserInfo : void
+{
+	SHIORI3FW.UserName = reference[0]
+	username = reference[0]
+	SHIORI3FW.UserNameFull = reference[1]
+	SHIORI3FW.UserBirthday = SPLIT(reference[2],',',3)
+	for _i = 0 ; _i < 3 ; _i++ {
+		SHIORI3FW.UserBirthday[_i] = TOINT(SHIORI3FW.UserBirthday[_i])
+	}
+	SHIORI3FW.UserSex = reference[3]
+}

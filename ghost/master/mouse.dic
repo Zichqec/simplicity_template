@@ -34,7 +34,7 @@ OnMouseMove.Sakura
 {
 	if reference4 == "head"
 	{
-		"\0Petting??"
+		"\0\s[0]Petting??"
 	}
 }
 
@@ -42,7 +42,7 @@ OnMouseMove.Kero
 {
 	if reference4 == "head"
 	{
-		"\1Petting..."
+		"\1\s[10]Petting..."
 	}
 }
 
