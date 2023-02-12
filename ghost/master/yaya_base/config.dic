@@ -1,0 +1,73 @@
+/*---------------------------------------------------------------------------------------
+ *  SHIORI/3.0 settings script for YAYA
+ * --------------------------------------------------------------------------------------*/
+
+
+/*---------------------------------------------------------------------------------------
+ *  Default values
+ * --------------------------------------------------------------------------------------*/
+
+/* Settings related to AITalk -------------------------------------------------------------------------*/
+/*
+TALK_INTERVAL	Talk interval default value [seconds]
+COM_RATIO		The rate of communication-starting talk for AITalk [%]
+*/
+#globaldefine	TALK_INTERVAL	180
+#globaldefine	COM_RATIO		0
+
+
+/* Settings related to installed ghost list creation -----------------------------------------------*/
+/*
+IGLIST_ACCEL
+	When the value is 1, if using SSP/CROW, the installed ghost list
+	will be created using NOTIFY installedghostname.
+	The sakura/kero name list will not be created, but the performance
+	speed will improve.
+	When the value is 0, the list is created with a file scan.
+	Having a large amount of ghosts installed will slow the process.
+
+IGLIST_MAX
+	Specifies the maximum number of ghosts to acquire information from
+	when creating the ghost list using a file scan.
+	When the value is -1, there will be no limit (acquires information
+	of all ghosts).
+	When 0, no information will be acquired.
+*/
+#globaldefine	SHIORI3FW.IGLIST_ACCEL		1
+#globaldefine	SHIORI3FW.IGLIST_MAX		0
+
+/* Settings related to request analysis and response creation ---------------------------------------------------*/
+/*
+SHIORI3FW.REQUEST_LINES_LIMIT
+	Specifies the maximum number of lines to analyze in a request string.
+	Lower numbers will improve startup times and performance speed in
+	general, but it may cause issues with creating the full list of
+	installed ghosts.
+	When 0, all lines will be analyzed.
+
+SHIORI3FW.RES_REF_MAX
+	Upper limit for res_reference
+
+SHIORI3FW.AUTO_DATA_CONVERT
+	When the value is 1, data will be processed in the same way as AYA5.
+	This includes automatically converting SAORI return value types and
+	automatically changing \0x01 to a comma.
+	When 0, those processes will not happen.
+
+SHIORI3FW.REF_ACCEL
+	When the value is 1, variables such as reference0 will not be 
+	created, and information will need to be accessed in the form of 
+	reference[0]. Performance speed may improve slightly.
+	When 0, variables such as reference0 will be created (backward compatibility processing).
+*/
+#globaldefine	SHIORI3FW.REQUEST_LINES_LIMIT	0
+#globaldefine	SHIORI3FW.RES_REF_MAX			32
+#globaldefine	SHIORI3FW.AUTO_DATA_CONVERT		0
+#globaldefine	SHIORI3FW.REF_ACCEL				0
+
+/*
+See: https://github.com/YAYA-shiori/yaya-dic/issues/19
+enabling Delayed EVAL will make your ghost more vulnerable to unsuspecting people using it to attack users' computers
+make sure this switch is turned off if you can
+*/
+#globaldefine	SHIORI3FW.ENABLE_DELAYED_EVAL	0

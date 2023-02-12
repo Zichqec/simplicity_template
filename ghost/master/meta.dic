@@ -1,0 +1,122 @@
+//This file handles a couple little QOL functions you may want. But these are not necessary! If you don't care for them just erase them. If you don't want to set up network updates, you can comment or remove the update functions too. If you're not interested in any of these, just remove the whole file!
+
+//—————————————————————————————— Installing something ——————————————————————————————
+OnInstallComplete
+{
+	"Installed a %(reference0),\w4 called %(reference1)."
+	--
+	if "ghost" _in_ reference0 //A little menu to open or change to the ghost that was installed immediately
+	{
+		"\n\n\_q"
+		--
+		"\![*]\__q[OnInstallComplete.Action,call]Call %(reference0)\__q  \![*]\__q[OnInstallComplete.Action,change]Change to %(reference0)\__q\n\n"
+		--
+		"\![*]\q[Thanks,]"
+	}
+}
+
+OnInstallComplete.Action
+{
+	if reference0 == "change"
+	{
+		"\![change,ghost,lastinstalled]"
+	}
+	else //call
+	{
+		"\![call,ghost,lastinstalled]"
+	}
+}
+
+
+//—————————————————————————————— Creating a .nar file ——————————————————————————————
+OnNarCreated
+{
+	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a" //Makes a clickable link that'll open the location of the file they just made
+	
+	"Successfully created %(_nar)."
+}
+
+OnNarLocation
+{	
+	_path = SPLITPATH(reference0)[0] + SPLITPATH(reference0)[1]
+	
+	"\![open,file,""%(_path)""]"
+}
+
+
+//—————————————————————————————— Network Update ——————————————————————————————
+//Starting an update
+OnUpdateBegin
+{
+	"\0Checking for updates.\w8"
+}
+
+//reference0 is the number of new files, starting from 0
+OnUpdateReady
+{
+	reference0++ //Number of files starts from 0, so this displays the correct amount
+	
+	//plural checks, adds an s and changes is to are if there's more than 1 file
+	_s = ""; _are = "is"; if reference0 != 1; _s = "s"; _are = "are"
+	
+	"\0There %(_are) %(reference0) new file%(_s).\w8"
+}
+
+//When the update finishes. Don't forget to initialize any new variables you've created! ISVAR is handy for checking if a variable exists before you attempt to assign it, like if !ISVAR("newvariable"); newvariable = 0
+//reference0 is 'none' if there were no new files to update with, reference1 is a list of new file names, separated by commas
+OnUpdateComplete
+{
+	if reference0 == "none"
+	{
+		"\0There are no new files."
+	}
+	else
+	{
+		"\0Update complete."
+	}
+}
+
+//reference0 is the name of the file currently being downloaded
+OnUpdate.OnDownloadBegin
+{
+	_progress = TOINT(reference1) + 1
+	_total = TOINT(reference2) + 1
+
+	"\0\b2\_qDownloading %(reference0)...\n\n\f[name,courier new]"
+	--
+	_display = ""
+	for _i = 0; _i < _total; _i++
+	{
+		//Loading bar display - customize with text or images or whatever
+		_filled = "■"	//Files that have already been downloaded
+		_empty = "□"	//Files that have not been downloaded yet
+		
+		if _i < _progress; _display += _filled
+		else; _display += _empty
+	}
+	--
+	"%(_display)\n\n%(_progress)/%(_total)"
+}
+
+//reference0 is the reason the update failed
+OnUpdateFailure //If the update fails
+{
+	if reference0 == "timeout" //If it timed out
+	{
+		"\0Connection timed out."
+	}
+	elseif reference0 == "md5 miss" //If the update files have not been uploaded correctly and don't match the updates2.dau
+	{
+		_file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] //This gets the name and extension of the offending file
+		
+		"\0The MD5 values don't match.\w8 Contact the ghost author and let them know that '%(_file)' is giving an MD5 error."
+	}
+	elseif reference0 == "artificial" //If the user cancels the update by double clicking the balloon
+	{
+		"\0Update cancelled."
+	}
+	else //Any other errors
+	{
+		"\0Error while updating:\w4 ""%(reference0)""."
+	}
+}

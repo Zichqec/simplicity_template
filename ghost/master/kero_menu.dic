@@ -1,0 +1,31 @@
+KeroMenuGreetings : nonoverlap
+{
+	"\1Hi."
+	"\1What's up?"
+}
+
+//Because there is an all modifier here, you don't need to write -- between menu options
+OnKeroMenu : all
+{
+	"\1\b2\![set,autoscroll,disable]"
+	if _argv[0] == "start"; KeroMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+	"\n\n\_q"
+	
+	//Put anything you want here, anything at all. For example, here's how you can add your own menu... You can make as many like this as you want! Uncomment if you want to test it out, or erase if you don't want it
+	//"\![*]\q[Some menu option,OnSomeMenu]\n\n"
+	
+	"\![*]\q[Nevermind,]"
+}
+
+/*
+OnSomeMenu : all
+{
+	"\1Some other menu."
+	"\n\n\_q"
+	
+	//Presumably more fun stuff here. Ask the character questions? Bug report information? Minigames? Utilities? Puzzles? Anything you can think of! Just make up a name for your menu function that starts with On, and put it in the \q tag like in the menu above
+	
+	"\![*]\q[Back to main menu,OnKeroMenu]\n"
+	"\![*]\q[Nevermind,]"
+}
+*/

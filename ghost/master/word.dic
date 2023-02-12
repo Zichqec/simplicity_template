@@ -1,0 +1,29 @@
+//Envelopes/word lists can be so much more than a simple basic list! Here's an example to make you think outside the box a little. To be used with dialogues like:
+//"I spent like 3 hours at the store the other day, looking for a shirt in %(favoredcolors). I found everything but, can you believe it?"
+//It gets fun because if it's a more mundane color, it's absurd they didn't have it. If it's one of the longer entries here though, why were you looking for that!! That's so oddly specific. But more generally, the kinds of things you add and the kinds of things you leave out can say a TON about a character. Like, this envelope here only has blues and grays. But maybe it could only have soft colors, or only very bold colors! Maybe all the entries are very clinical, or maybe they're long and rambly. Envelopes can say SO much about your character, have fun with them!
+/*
+favoredcolors
+{
+	"baby blue"
+	"cerulean"
+	"mint"
+	"misty gray"
+	"soft blue"
+	"ocean blue"
+	"navy blue"
+	"slate"
+	"aqua"
+	"a blue so rich you could get lost in it for hours"
+	"the very same blue of the dress my mother used to wear every sunday"
+	"a soft blue with hints of green"
+	"an electrifying blue that takes your breath away"
+	"a bold and undeniable blue"
+	"a blue often mistaken for purple"
+	"the kind of blue that makes you sad"
+	"a gray that helps you blend into the crowd"
+	"the grayest gray possible"
+	"a gray so gray you can only see gray for days afterwards"
+}
+*/
+
+//And if you're not interested in making word lists like this at all, you can just remove this whole file! Or use it for something else, you do you

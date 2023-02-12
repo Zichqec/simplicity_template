@@ -1,0 +1,16 @@
+charset,UTF-8
+
+name,Simplicity Template
+type,ghost
+
+shiori,yaya.dll
+
+craftman,
+craftmanurl,
+
+sakura.name,
+kero.name,
+
+icon,icon.ico
+
+sstp.allowunspecifiedsend,0

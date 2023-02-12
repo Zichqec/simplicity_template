@@ -1,0 +1,9 @@
+charset,UTF-8
+type,shell
+
+name,Default Shell
+craftman,
+craftmanurl,
+
+seriko.alignmenttodesktop,free
+seriko.use_self_alpha,1
