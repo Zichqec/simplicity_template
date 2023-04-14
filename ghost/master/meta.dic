@@ -62,7 +62,7 @@ OnUpdateReady
 	"\0\s[0]There %(_are) %(reference0) new file%(_s).\w8"
 }
 
-//When the update finishes. Don't forget to initialize any new variables you've created! ISVAR is handy for checking if a variable exists before you attempt to assign it, like if !ISVAR("newvariable"); newvariable = 0
+//When the update finishes. Don't forget to initialize any new variables you've created! I highly highly recommend using OnInitialize for this (it's in boot.dic), in case the user updates via the ghost explorer or some other means.
 //reference0 is 'none' if there were no new files to update with, reference1 is a list of new file names, separated by commas
 OnUpdateComplete
 {
@@ -74,28 +74,6 @@ OnUpdateComplete
 	{
 		"\0\s[0]Update complete."
 	}
-}
-
-//reference0 is the name of the file currently being downloaded
-OnUpdate.OnDownloadBegin
-{
-	_progress = TOINT(reference1) + 1
-	_total = TOINT(reference2) + 1
-
-	"\0\s[0]\b2\_qDownloading %(reference0)...\n\n\f[name,courier new]"
-	--
-	_display = ""
-	for _i = 0; _i < _total; _i++
-	{
-		//Loading bar display - customize with text or images or whatever
-		_filled = "■"	//Files that have already been downloaded
-		_empty = "□"	//Files that have not been downloaded yet
-		
-		if _i < _progress; _display += _filled
-		else; _display += _empty
-	}
-	--
-	"%(_display)\n\n%(_progress)/%(_total)"
 }
 
 //reference0 is the reason the update failed

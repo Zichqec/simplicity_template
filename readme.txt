@@ -10,8 +10,7 @@ My eternal thanks to Ayakamtka for translating the config.dic to English!
 
 1: If you are using github to host your network updates, DO NOT use a github.io url with this template. The _loading_order.txt file in the yaya_base directory will cause a 404 error because of the underscore at the start of its name. Use a raw.githubusercontent link instead, it's better for multiple reasons.
 
-2: THIS TEMPLATE HAS AUTO DATA CONVERT OFF. This means that if you send information by references, you will have to explicitly convert that data with TOINT or TOREAL if you want it to be numbers and not strings. THIS INCLUDES REFERENCE INFORMATION FROM SHIORI EVENTS THAT YOU SEE ON UKADOC. For more information, read my guide, here: https://ukagakadreamteam.com/wiki/guide/aya_yaya/what_is_auto_data_convert_zichqec
-If you want to change this setting, you can change it in yaya_base/config.dic, near the bottom.
+2: This template has a simple Emergency Mode set up. This means that if there is an error in your dic files, it will load *just* the files in yaya_base and emerg.dic, and nothing else. This is so that errors can be output to the error log without necessarily needing the debugger Tama! I do recommend Tama, but this makes life a little easier. If you want to customize which files load, you can do that in yaya_emerg.txt
 
 3: This template does NOT use Select.options! Instead, if you click on a menu choice and the linked function's name doesn't start with On, it'll direct to OnChoiceSelect. See Ukadoc for more details. https://ukagakadreamteam.github.io/ukadoc/manual/list_sakura_script.html#_q_%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB,ID_
 https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnChoiceSelect
@@ -59,5 +58,5 @@ https://zichqec.github.io/s-the-skeleton/
 
 That's it, have fun!
 
-Simplicity Template v1.0.1, using YAYATc571-5.
+Simplicity Template v1.0.2, using YAYATc571-5.
 https://github.com/Zichqec/simplicity_template

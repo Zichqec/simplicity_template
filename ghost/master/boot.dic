@@ -12,6 +12,10 @@ OnInitialize
 {
 	//If you want some variables to reset on boot, put them here. This event will happen even if you add other events like OnGhostChanged
 	
+	//If you add new variables in updates, I recommend initializing them like so:
+	//if !ISVAR("NewVariable"); NewVariable = 0
+	//This means that it will only set the new variable if the user doesn't already have it, so that their variables don't get overwritten
+	
 	if reference0 != "reload" //For things you want to reset EXCEPT when just reloading; a convenience for you the dev, basically
 	{
 		LastTalk = ""

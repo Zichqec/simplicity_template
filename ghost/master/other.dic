@@ -27,6 +27,12 @@ OnKeyPress
 	elseif reference0 == "r"; OnLastTalk
 }
 
+//Happens about 30 seconds after a script ends, by default, to bring them back to normal poses
+OnSurfaceRestore
+{
+	"\1\s[10]\0\s[0]"
+}
+
 //Network update url. Make sure you have a / on the end of the url or it will give a warning every time users try to update! If you don't plan to use network updates you can remove this
 //IF YOU'RE USING GITHUB FOR NETWORK UPDATES: DO NOT USE github.io URLS! It will cause you pain and suffering. USE raw.githubusercontent!!!
 //To get the raw.githubusercontent link super easy:
@@ -34,7 +40,7 @@ OnKeyPress
 //• navigate to the ghost's folder (the top level one, with install.txt, readme.txt, etc)
 //• Click on install.txt, or another text file on that level
 //• Once on that page, click the "raw" button. You should see the url now starts with raw.githubusercontent
-//• Copy that url exactly as is, but _leave off the "install.txt" or whatever file name at the end._
+//• Copy that url exactly as is, but *leave off the "install.txt" or whatever file name at the end.*
 //Tada! That's your url! Make sure you test it! The dev palette and script/network log can help with that
 On_homeurl
 {

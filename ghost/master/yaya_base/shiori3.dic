@@ -143,7 +143,7 @@ load
 	SHIORI3FW.HWndOld      = (0,0)
 	SHIORI3FW.BalloonHWnd  = (0,0)
 	SHIORI3FW.UniqueID     = ''
-	SHIORI3FW.DebugMode    = 1
+	SHIORI3FW.DebugMode    = 0
 	SHIORI3FW.CanTalkFlag  = 1
 
 	SHIORI3FW.Eventid = ''
@@ -386,12 +386,9 @@ request
 	var.req.value = IARRAY
 	var.req.rawvalue = IARRAY
 
-	_linenum = 0
-	_idparsed = 0
-
 	status = ''
 	SHIORI3FW.Eventid=''
-	SHIORI3FW.SecurityLevel='Internal'//互換性のためデフォルトはInternal
+	SHIORI3FW.SecurityLevel='local'//互換性のためデフォルトはlocal
 
 	while _lineend > _linestart {
 		//行分割
@@ -401,15 +398,6 @@ request
 		//空行もしくはみつからなかった
 		if _lineend <= _linestart {
 			break
-		}
-
-		_linenum += 1
-		if SHIORI3FW.REQUEST_LINES_LIMIT {
-			if _linenum > SHIORI3FW.REQUEST_LINES_LIMIT {
-				if _idparsed {
-					break
-				}
-			}
 		}
 
 		_lin = SUBSTR(_reqdata,_linestart,(_lineend - _linestart))
@@ -437,22 +425,6 @@ request
 			if SUBSTR(SHIORI3FW.Eventid, 0, 2) != 'On' {
 				SHIORI3FW.Eventid = 'On_' + SHIORI3FW.Eventid
 			}
-
-			if SHIORI3FW.Eventid == 'OnAiTalk' || SHIORI3FW.Eventid == 'OnAITalk' {
-				SHIORI3FW.Eventid = 'OnAITalkNewEvent'
-			}
-
-			SHIORI3FW.EventidTranslate = SHIORI3FW.TranslateEvent(SHIORI3FW.Eventid)
-
-			// ハンドラが無い場合は即返る
-			if !ISFUNC(SHIORI3FW.EventidTranslate) && !SHIORI3FW.IsImportantEvent {
-				SHIORI3FW.MakeEmptyResponse(SHIORI3FW.Eventid)
-				--
-				C_CRLF
-
-				return
-			}
-			_idparsed = 1
 		}
 		// セキュリティレベル
 		elseif _key == 'SecurityLevel' {
@@ -469,15 +441,6 @@ request
 		//Status
 		elseif _key == 'Status' {
 			status = _value
-		}
-
-		//特定のイベントを除きExternalなら204で返る
-		if SHIORI3FW.SecurityLevel == 'External' && SHIORI3FW.Eventid != 'OnXUkagakaLinkOpen' {
-			SHIORI3FW.MakeEmptyResponse
-			--
-			C_CRLF
-
-			return
 		}
 
 		// キーと値を記憶
@@ -497,6 +460,25 @@ request
 		else {
 			var.req.value ,= TOAUTOEX(_value)
 		}
+	}
+
+	if SHIORI3FW.Eventid == 'OnAiTalk' || SHIORI3FW.Eventid == 'OnAITalk' {
+		SHIORI3FW.Eventid = 'OnAITalkNewEvent'
+	}
+
+	if TOLOWER(SHIORI3FW.SecurityLevel) == 'external' {
+		SHIORI3FW.Eventid = 'ExternalEvent.' + SHIORI3FW.Eventid
+	}
+
+	SHIORI3FW.EventidTranslate = SHIORI3FW.TranslateEvent(SHIORI3FW.Eventid)
+
+	// ハンドラが無い場合は即返る
+	if !ISFUNC(SHIORI3FW.EventidTranslate) && !SHIORI3FW.IsImportantEvent {
+		SHIORI3FW.MakeEmptyResponse(SHIORI3FW.Eventid)
+		--
+		C_CRLF
+
+		return
 	}
 
 	OnRequest
@@ -1430,7 +1412,7 @@ FUNCTIONEX
 
 	// リクエスト文字列を作成
 	_reqheader = /
-		"EXECUTE SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_CRLF)SecurityLevel: Local%(C_CRLF)"
+		"EXECUTE SAORI/1.0%(C_CRLF)Charset: %(CHARSETLIBEX(_argv[0]))%(C_CRLF)Sender: AYA%(C_CRLF)SecurityLevel: local%(C_CRLF)"
 	for _i = 1; _i < _argc; _i++ {
 		_reqheader += "Argument%(_i - 1): %(_argv[_i])%(C_CRLF)"
 	}

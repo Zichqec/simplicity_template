@@ -1,0 +1,23 @@
+OnInitialize
+{
+	EMERG.give_error_message = 1
+}
+
+OnSecondChange
+{
+	if EMERG.give_error_message == 1
+	{
+		"\![raise,OnEMERG.ErrorMessage]"
+	}
+}
+
+OnMouseDoubleClick
+{
+	OnEMERG.ErrorMessage
+}
+
+OnEMERG.ErrorMessage
+{
+	ERASEVAR("EMERG.give_error_message")
+	"\_qError in the dic files, cannot load. Check the error log for details.\x"
+}

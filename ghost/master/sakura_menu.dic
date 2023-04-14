@@ -8,7 +8,7 @@ SakuraMenuGreetings : nonoverlap
 OnSakuraMenu : all
 {
 	"\0\s[0]\b2\![set,autoscroll,disable]"
-	if _argv[0] == "start"; SakuraMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
+	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; SakuraMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
 	
 	"\n\n\_q"
 	
@@ -46,7 +46,7 @@ OnTalkRateMenu : all
 	"\![*]\q[5 minutes,OnTalkRateChange,300]\n"
 	"\![*]\q[10 minutes,OnTalkRateChange,600]\n"
 	"\n"
-	"\![*]\q[Nevermind,OnConfig]"
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Nevermind,]"
 }
 
 OnTalkRateChange

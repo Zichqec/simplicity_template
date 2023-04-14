@@ -38,13 +38,6 @@ IGLIST_MAX
 
 /* Settings related to request analysis and response creation ---------------------------------------------------*/
 /*
-SHIORI3FW.REQUEST_LINES_LIMIT
-	Specifies the maximum number of lines to analyze in a request string.
-	Lower numbers will improve startup times and performance speed in
-	general, but it may cause issues with creating the full list of
-	installed ghosts.
-	When 0, all lines will be analyzed.
-
 SHIORI3FW.RES_REF_MAX
 	Upper limit for res_reference
 
@@ -60,7 +53,6 @@ SHIORI3FW.REF_ACCEL
 	reference[0]. Performance speed may improve slightly.
 	When 0, variables such as reference0 will be created (backward compatibility processing).
 */
-#globaldefine	SHIORI3FW.REQUEST_LINES_LIMIT	0
 #globaldefine	SHIORI3FW.RES_REF_MAX			32
 #globaldefine	SHIORI3FW.AUTO_DATA_CONVERT		0
 #globaldefine	SHIORI3FW.REF_ACCEL				0
