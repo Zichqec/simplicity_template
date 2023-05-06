@@ -14,7 +14,7 @@ OnKeroMenu : all
 	//Put anything you want here, anything at all. For example, here's how you can add your own menu... You can make as many like this as you want! Uncomment if you want to test it out, or erase if you don't want it
 	//"\![*]\q[Some menu option,OnSomeMenu]\n\n"
 	
-	"\![*]\q[Nevermind,]"
+	"\![*]\q[Nevermind,blank]"
 }
 
 /*
@@ -26,6 +26,6 @@ OnSomeMenu : all
 	//Presumably more fun stuff here. Ask the character questions? Bug report information? Minigames? Utilities? Puzzles? Anything you can think of! Just make up a name for your menu function that starts with On, and put it in the \q tag like in the menu above
 	
 	"\![*]\q[Back to main menu,OnKeroMenu]\n"
-	"\![*]\q[Nevermind,]"
+	"\![*]\q[Nevermind,blank]"
 }
 */

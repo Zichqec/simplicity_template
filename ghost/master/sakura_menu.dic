@@ -18,7 +18,7 @@ OnSakuraMenu : all
 	
 	"\![*]\q[Change talk rate,OnTalkRateMenu]\n\n"
 	
-	"\![*]\q[Nevermind,]"	
+	"\![*]\q[Nevermind,blank]"	
 }
 
 OnLastTalk
@@ -46,7 +46,7 @@ OnTalkRateMenu : all
 	"\![*]\q[5 minutes,OnTalkRateChange,300]\n"
 	"\![*]\q[10 minutes,OnTalkRateChange,600]\n"
 	"\n"
-	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Nevermind,]"
+	"\![*]\q[Back,OnSakuraMenu]  \![*]\q[Nevermind,blank]"
 }
 
 OnTalkRateChange

@@ -11,6 +11,7 @@ OnFirstBoot
 OnInitialize
 {
 	//If you want some variables to reset on boot, put them here. This event will happen even if you add other events like OnGhostChanged
+	//OnInitialize is a NOTIFY event! That means it cannot return scripts. This event is only meant for things like variable changes. See this page on Ukadoc for more info: https://ukagakadreamteam.github.io/ukadoc/manual/spec_shiori3.html
 	
 	//If you add new variables in updates, I recommend initializing them like so:
 	//if !ISVAR("NewVariable"); NewVariable = 0
