@@ -151,7 +151,7 @@ p
 /*
 
 An example of the above setup:
-"%(they) %(p('were','was')) looking for that earlier, I'll ask if %(they)'%('ve','s') found it."
+"%(they) %(p('were','was')) looking for that earlier, I'll ask if %(they)'%(p('ve','s')) found it."
 
 If using they, the %(p) functions will return the first word specified, resulting in:
 "they were looking for that earlier, I'll ask if they've found it."
@@ -163,15 +163,9 @@ With this function, you can quickly customize words that need to change based on
 
 */
 
-//Copied from the base SHIORI files, but with the username variable added
-OnNotifyUserInfo : void
+//This just makes %(username) match with the username determined by the SSP prefs, rather than having to use the %username environment variable which is *not* the same and which you can't do things like TOUPPER to.
+//If you want to have the user be able to set a nickname or something, you may want to change username to a variable instead and get rid of this!
+username
 {
-	SHIORI3FW.UserName = reference[0]
-	username = reference[0]
-	SHIORI3FW.UserNameFull = reference[1]
-	SHIORI3FW.UserBirthday = SPLIT(reference[2],',',3)
-	for _i = 0 ; _i < 3 ; _i++ {
-		SHIORI3FW.UserBirthday[_i] = TOINT(SHIORI3FW.UserBirthday[_i])
-	}
-	SHIORI3FW.UserSex = reference[3]
+	SHIORI3FW.UserName
 }

@@ -3,6 +3,7 @@
 //2: The example blink code is set up with the new definition, which I recommend you use. Here is my guide to what that means: https://zichqec.github.io/s-the-skeleton/olddef_vs_newdef
 //If you want to use old definition, make sure to erase that 'version,1' bit.
 //3: It is very common for people to feel stuck on how to start, because they don't know what expressions to make without having dialogue, but they don't know what dialogue to write without having expressions. If you're feeling that way, I highly suggest using emoji as substitutes just to get you started! That may sound weird if you're not fond of emoji, but seriously, just give it a try. I've found that just writing a few messages in Discord and using the emoji to signify surface changes is a great help to get me past that initial hump where it feels impossible.
+//4: Also consider taking a look at Ukadoc's list of recommended surfaces! https://ukagakadreamteam.github.io/ukadoc/manual/descript_shell_surfaces.html#caption_standarddef This can give you an idea of how to start, but also, some external SHIORI events use these surfaces by default! If your ghost has them, it will react as intended! It's not required, but it's something you can consider.
 
 
 descript
@@ -21,6 +22,25 @@ surface0
 	//animation0.pattern1,overlay,101,0,0,0
 	//animation0.pattern2,overlay,102,100,0,0
 	//animation0.pattern3,overlay,-1,50,0,0
+	
+	
+	//Example code for a talk animation - uncomment if you want it
+	// animation1.interval,talk,4
+	// animation1.pattern0,alternativestart,(2,3,4)
+	
+	// animation2.interval,never
+	// animation2.pattern0,overlay,103,0,0,0
+	// animation2.pattern1,overlay,104,200,0,0
+	// animation2.pattern2,overlay,-1,200,0,0
+	
+	// animation3.interval,never
+	// animation3.pattern0,overlay,103,0,0,0
+	// animation3.pattern1,overlay,-1,200,0,0
+	
+	// animation4.interval,never
+	// animation4.pattern0,overlay,104,0,0,0
+	// animation4.pattern1,overlay,105,200,0,0
+	// animation4.pattern2,overlay,-1,200,0,0
 }
 
 //—————————————————————————————— Kero surfaces ——————————————————————————————

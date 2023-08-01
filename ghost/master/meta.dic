@@ -57,7 +57,8 @@ OnUpdateReady
 	reference0++ //Number of files starts from 0, so this displays the correct amount
 	
 	//plural checks, adds an s and changes is to are if there's more than 1 file
-	_s = ""; _are = "is"; if reference0 != 1; _s = "s"; _are = "are"
+	_s = ""; _are = "is"
+	if reference0 != 1; {_s = "s"; _are = "are"}
 	
 	"\0\s[0]There %(_are) %(reference0) new file%(_s).\w8"
 }
