@@ -1,9 +1,9 @@
-//This file handles a couple little QOL functions you may want. But these are not necessary! If you don't care for them just erase them. If you don't want to set up network updates, you can comment or remove the update functions too. If you're not interested in any of these, just remove the whole file!
+//This file handles a couple little QOL functions you may want, as well as some SNTP events since they don't have default text. But these are not necessary! If you don't care for them just erase them. If you don't want to set up network updates, you can comment or remove the update functions too. If you're not interested in any of these, just remove the whole file!
 
 //—————————————————————————————— Installing something ——————————————————————————————
 OnInstallComplete
 {
-	"\0\s[0]Installed a %(reference0),\w4 called %(reference1)."
+	"\0\s[0]Installed %(reference1) (%(reference0))."
 	--
 	if "ghost" _in_ reference0 //A little menu to open or change to the ghost that was installed immediately
 	{
@@ -98,4 +98,32 @@ OnUpdateFailure //If the update fails
 	{
 		"\0\s[0]Error while updating:\w4 ""%(reference0)""."
 	}
+}
+
+
+//—————————————————————————————— SNTP (clock fixing) ——————————————————————————————
+OnSNTPCompare
+{
+	if reference3 != 0
+	{
+		_s = ""; if reference3 != 1; _s = "s"
+		
+		"\0\s[0]The clock is off by %(reference3) second%(_s).\n\n"
+		--
+		"\![*]\q[Fix it,script:\6]  \![*]\q[Leave it,blank]"
+	}
+	else
+	{
+		"\0\s[0]The clock is accurate."
+	}
+}
+
+OnSNTPCorrect
+{
+	"\0\s[0]The clock has been corrected."
+}
+
+OnSNTPFailure
+{
+	"\0\s[0]Could not correct the clock."
 }

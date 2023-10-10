@@ -8,8 +8,8 @@ shiori,yaya.dll
 craftman,
 craftmanurl,
 
-sakura.name,
-kero.name,
+sakura.name,Simplicity
+kero.name,Template
 
 icon,icon.ico
 
