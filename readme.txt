@@ -12,7 +12,7 @@ My eternal thanks to Ayakamtka for translating the config.dic to English!
 
 2: This template has a simple Emergency Mode set up. This means that if there is an error in your dic files, it will load *just* the files in yaya_base and emerg.dic, and nothing else. This is so that errors can be output to the error log without necessarily needing the debugger Tama! I do recommend Tama, but this makes life a little easier. If you want to customize which files load, you can do that in yaya_emerg.txt
 
-3: This template does NOT use Select.options! Instead, if you click on a menu choice and the linked function's name doesn't start with On, it'll direct to OnChoiceSelect. See Ukadoc for more details. https://ukagakadreamteam.github.io/ukadoc/manual/list_sakura_script.html#_q_%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB,ID_
+3: This template does NOT use Select.options! Instead, if you click on a menu choice and the linked function's name doesn't start with On, it'll direct to OnChoiceSelect. See Ukadoc for more details. https://ukagakadreamteam.github.io/ukadoc/manual/list_sakura_script.html#_q_title,ID_
 https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnChoiceSelect
 
 If you want to use Select.options, add this snip of code somewhere:
@@ -54,9 +54,9 @@ http://ashido.com/ukagaka/
 
 
 This template is free to use to create whatever ghost you like, no need to credit me for it. If you'd like to see more by me, I can be found here:
-https://zichqec.github.io/s-the-skeleton/
+https://ukagaka.zichqec.com/
 
 That's it, have fun!
 
-Simplicity Template v1.0.6, using YAYATc571-5.
+Simplicity Template v1.0.7, using YAYATc571-5.
 https://github.com/Zichqec/simplicity_template
