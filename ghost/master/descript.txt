@@ -6,6 +6,7 @@ type,ghost
 shiori,yaya.dll
 
 craftman,
+craftmanw,
 craftmanurl,
 
 sakura.name,Simplicity

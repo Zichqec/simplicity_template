@@ -3,6 +3,7 @@ type,shell
 
 name,Default Shell
 craftman,
+craftmanw,
 craftmanurl,
 
 seriko.alignmenttodesktop,free
