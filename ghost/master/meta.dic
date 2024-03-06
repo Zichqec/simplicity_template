@@ -1,11 +1,15 @@
-//This file handles a couple little QOL functions you may want, as well as some SNTP events since they don't have default text. But these are not necessary! If you don't care for them just erase them. If you don't want to set up network updates, you can comment or remove the update functions too. If you're not interested in any of these, just remove the whole file!
+//This file handles a couple little QOL functions you may want, as well as default text for some events since SSP doesn't provide defaults. But these are not necessary! If you don't care for them just erase them. If you don't want to set up network updates, you can comment or remove the update functions too. If you're not interested in any of these, just remove the whole file!
+//If you are interested in expanding on these events, I've included links to their documentation in ukadoc for easy reference
 
 //—————————————————————————————— Installing something ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnInstallBegin
+
 OnInstallComplete
 {
 	"\0\s[0]Installed %(reference1) (%(reference0))."
 	--
-	if "ghost" _in_ reference0 //A little menu to open or change to the ghost that was installed immediately
+	//A little menu to open or change to the ghost that was installed immediately
+	if "ghost" _in_ reference0
 	{
 		"\n\n\_q"
 		--
@@ -27,11 +31,30 @@ OnInstallComplete.Action
 	}
 }
 
+OnInstallFailure
+{
+	_reason = reference0
+	case reference0
+	{
+		when "unlha32"; _reason = "could not load the dll to decompress lzh files"
+		when "extraction"; _reason = "failed to decompress the file"
+		when "invalid type"; _reason = "the install.txt is incorrect"
+		when "unsupported"; _reason = "the archive is not supported"
+		when "password"; _reason = "incorrect password"
+		when "artificial"; _reason = "canceled by user"
+	}
+	
+	"\0\s[0]Could not complete installation: %(_reason)."
+}
+
 
 //—————————————————————————————— Creating a .nar file ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnNarCreating
+
 OnNarCreated
 {
-	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a" //Makes a clickable link that'll open the location of the file they just made
+	//Makes a clickable link that'll open the location of the file they just made
+	_nar = "\_a[OnNarLocation,""%(reference1)""]%(reference0)\_a"
 	
 	"\0\s[0]Successfully created %(_nar)."
 }
@@ -45,7 +68,8 @@ OnNarLocation
 
 
 //—————————————————————————————— Network Update ——————————————————————————————
-//Starting an update
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnUpdateBegin
+
 OnUpdateBegin
 {
 	"\0\s[0]Checking for updates.\w8"
@@ -64,7 +88,7 @@ OnUpdateReady
 }
 
 //When the update finishes. Don't forget to initialize any new variables you've created! I highly highly recommend using OnInitialize for this (it's in boot.dic), in case the user updates via the ghost explorer or some other means.
-//reference0 is 'none' if there were no new files to update with, reference1 is a list of new file names, separated by commas
+//reference0 is 'none' if there were no new files to update with
 OnUpdateComplete
 {
 	if reference0 == "none"
@@ -77,31 +101,23 @@ OnUpdateComplete
 	}
 }
 
-//reference0 is the reason the update failed
-OnUpdateFailure //If the update fails
-{
-	if reference0 == "timeout" //If it timed out
+OnUpdateFailure
+{	
+	_file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] //For MD5 errors, this gets the name and extension of the offending file
+	_reason = reference0
+	case reference0
 	{
-		"\0\s[0]Connection timed out."
+		when "timeout"; _reason = "connection timed out"
+		when "md5 miss"; _reason = "MD5 error on file %(_file)\n\nPlease contact the ghost author for assistance"
+		when "artificial"; _reason = "canceled by user"
 	}
-	elseif reference0 == "md5 miss" //If the update files have not been uploaded correctly and don't match the updates2.dau
-	{
-		_file = SPLITPATH(reference1)[2] + SPLITPATH(reference1)[3] //This gets the name and extension of the offending file
-		
-		"\0\s[0]The MD5 values don't match.\w8 Contact the ghost author and let them know that '%(_file)' is giving an MD5 error."
-	}
-	elseif reference0 == "artificial" //If the user cancels the update by double clicking the balloon
-	{
-		"\0\s[0]Update cancelled."
-	}
-	else //Any other errors
-	{
-		"\0\s[0]Error while updating:\w4 ""%(reference0)""."
-	}
+	"\0\s[0]Could not update: %(_reason)."
 }
 
 
 //—————————————————————————————— SNTP (clock fixing) ——————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnSNTPBegin
+
 OnSNTPCompare
 {
 	if reference3 != 0
@@ -126,4 +142,38 @@ OnSNTPCorrect
 OnSNTPFailure
 {
 	"\0\s[0]Could not correct the clock."
+}
+
+
+//—————————————————————————————— BIFF (Email check) ———————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnBIFFBegin
+
+OnBIFFFailure
+{
+	_reason = reference0
+	case reference0
+	{
+		when "timeout"; _reason = "connection timed out"
+		when "kick"; _reason = "can't access account"
+		when "defect"; _reason = "POP settings incorrect"
+		when "artificial"; _reason = "canceled by user"
+	}
+
+	"\0\s[0]Could not get emails: %(_reason)."
+}
+
+
+//———————————————————————————————— Headlines/RSS ——————————————————————————————————
+//https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html#OnHeadlinesenseBegin
+
+OnHeadlinesenseFailure
+{
+	_reason = reference0
+	case reference0
+	{
+		when "can't download"; _reason = "can't download the file"
+		when "can't analyze"; _reason = "can't analyze the file"
+	}
+
+	"\0\s[0]Could not get RSS: %(_reason)."
 }
