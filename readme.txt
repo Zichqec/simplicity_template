@@ -58,5 +58,5 @@ https://ukagaka.zichqec.com/
 
 That's it, have fun!
 
-Simplicity Template v1.0.7, using YAYATc571-5.
-https://github.com/Zichqec/simplicity_template
+Simplicity Template v1.0.8 https://github.com/Zichqec/simplicity_template
+Using YAYA Tc571-5 https://github.com/yaya-shiori/
