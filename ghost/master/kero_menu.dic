@@ -7,7 +7,7 @@ KeroMenuGreetings : nonoverlap
 //Because there is an all modifier here, you don't need to write -- between menu options
 OnKeroMenu : all
 {
-	"\1\b2\![set,autoscroll,disable]"
+	"\1\b[2]\![set,autoscroll,disable]"
 	if SHIORI3FW.Eventid == "OnMouseDoubleClick"; KeroMenuGreetings //The check here is so they won't comment if you click the back button. Remove if you prefer
 	"\n\n\_q"
 	
