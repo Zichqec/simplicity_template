@@ -1,4 +1,4 @@
-A simple ghost template, with the philosophy that content is what matters most, and side functions can come later if you want/need them.
+﻿A simple ghost template, with the philosophy that content is what matters most, and side functions can come later if you want/need them.
 There's not much here; just a simple menu setup with talk rate adjustment. The ghost will take your username from what you have in the SSP preferences, and it will base your pronouns on what you have the "sex" option set to ("Undefined" will use they). It will also figure out your birthday from there.
 Note that just about everything in this template, aside from the files in the yaya_base folder, is optional! If you don't want that particular thing in your ghost, you can probably just erase it or comment it out! Don't be afraid to try stuff.
 
