@@ -12,8 +12,13 @@ OnSakuraMenu : all
 	
 	"\n\n\_q"
 	
-	"\![*]\q[Talk to me,OnAiTalk]"
-	if LastTalk != ""; "  \![*]\q[Say that again,OnLastTalk]"
+	"\![*]\q[Talk to me,OnAiTalk]  "
+	switch LastTalk == "" //Uses top option if there is a dialogue to repeat
+	{
+		"\![*]\q[Say that again,OnLastTalk]"
+		"\![*]\f[color,disable]Say that again\f[color,default]"
+	}
+	
 	"\n\n"
 	
 	"\![*]\q[Change talk rate,OnTalkRateMenu]\n\n"

@@ -9,11 +9,11 @@ dicdir, yaya_base
 
 dic, aitalk.dic
 dic, boot.dic
-dic, kero_menu.dic
-dic, mouse.dic
+dic, menu_kero.dic
+dic, menu_sakura.dic
 dic, meta.dic
+dic, mouse.dic
 dic, other.dic
-dic, sakura_menu.dic
 dic, word.dic
 
 msglang,english
