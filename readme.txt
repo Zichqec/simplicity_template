@@ -55,8 +55,9 @@ http://ashido.com/ukagaka/
 
 This template is free to use to create whatever ghost you like, no need to credit me for it. If you'd like to see more by me, I can be found here:
 https://ukagaka.zichqec.com/
+**You do not need to keep the links at the bottom of this file.** They're just for your reference so you know what version of the template you have! (But if you like to keep them, feel free, just don't feel *obligated*.)
 
 That's it, have fun!
 
 Simplicity Template v1.0.8 https://github.com/Zichqec/simplicity_template
-Using YAYA Tc571-5 https://github.com/yaya-shiori/
+Using YAYA Tc571-11 https://github.com/yaya-shiori/
