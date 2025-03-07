@@ -37,7 +37,7 @@ OnMouseDoubleClick
 There is a name, then some brackets, and code inside of it. You'll see also that the name starts with "On". If the name does NOT start with "On", it's probably a normal function. But if it has "On", you should look it up on Ukadoc to see what it does! Here's the page for SHIORI events:
 https://ukagakadreamteam.github.io/ukadoc/manual/list_shiori_event.html
 
-Ctrl + F is your friend here. If you can't find the name on that page, then it is very likely to be a custom SHIORI event. In that case, you should use Ctrl + F in NotePad++ (or whatever editor you're using) to try and find other instances of the name in the ghost's files. If using NotePad++, the "Find in Files" option is really handy for this, especially if you set it to only search through .dic files.
+Ctrl + F is your friend here. If you can't find the name on that page, then it is very likely to be a custom SHIORI event. In that case, you should use Ctrl + F in Notepad++ (or whatever editor you're using) to try and find other instances of the name in the ghost's files. If using Notepad++, the "Find in Files" option is really handy for this, especially if you set it to only search through .dic files.
 
 In this case, you are likely to find the name of the SHIORI event inside of Sakura Script tags, such as menu choices like \q[Settings,OnConfigMenu], or raise tags like \![raise,OnSomeEvent]. You can read more about Sakura Script tags here:
 https://ukagakadreamteam.github.io/ukadoc/manual/list_sakura_script.html
