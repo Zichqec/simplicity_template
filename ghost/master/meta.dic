@@ -60,10 +60,8 @@ OnNarCreated
 }
 
 OnNarLocation
-{	
-	_path = SPLITPATH(reference0)[0] + SPLITPATH(reference0)[1]
-	
-	"\![open,file,""%(_path)""]"
+{
+	"\![open,explorer,""%(reference0)""]"
 }
 
 
